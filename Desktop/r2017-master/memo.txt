@@ -1,0 +1,36 @@
+vi /boot/config.txt
+dtparam=i2c_baudrate=50000
+
+ps ax|grep PWM
+sudo rm /tmp/*.txt
+more /tmp/cntWheel.txt
+more /tmp/bar.txt
+more /etc/rc.local
+
+cd Pi-PWM
+git add .
+git commit
+git push
+
+more ~/.config/lxsession/LXDE-pi/autostart
+vi   ~/.config/lxsession/LXDE-pi/autostart
+
+more /etc/rc.local
+vi   /etc/rc.local
+
+sudo raspi-config
+# 3 Enable Boot to Desktop/Scratch
+# Console Text console, requiring login (default)
+# startx
+
+sudo apt-get install chkconfig
+chkconfig --list
+
+sudo chkconfig dphys-swapfile off  #swapは利用しないので停止します
+sudo chkconfig lightdm off         #ディスプレイ上のログイン画面関連
+sudo chkconfig motd off            #ログイン時に表示するメッセージ
+# sudo chkconfig ntp off             #時刻合わせサーバー
+sudo chkconfig plymouth off        #グラフィカルブートプロセス
+sudo chkconfig dphys-swapfile off  #swapの停止
+sudo chkconfig triggerhappy off    #キーボードのショートカットキー
+sudo chkconfig x11-common off   
